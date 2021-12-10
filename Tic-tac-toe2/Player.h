@@ -8,7 +8,7 @@ class Player
 {
 public:
 	Player() = default;
-	Player(char symbol);
+	explicit Player(char symbol);
 	virtual ~Player() = default;
 
 	//Making movement (to override)
