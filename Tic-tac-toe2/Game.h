@@ -8,7 +8,7 @@ class Game
 {
 public:
 	Game() = default;
-	Game(std::size_t dimension);
+	explicit Game(std::size_t dimension);
 	~Game() = default;
 
 	void playGame();
