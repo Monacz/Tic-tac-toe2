@@ -6,7 +6,7 @@ HumanPlayer::HumanPlayer()
     isFirstMove();
 }
 
-Cell HumanPlayer::makeMove(Board& board)
+Cell HumanPlayer::makeMove(Board board)
 {
     Cell movement;
    

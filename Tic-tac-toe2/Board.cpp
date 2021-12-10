@@ -3,7 +3,7 @@
 
 
 Board::Board(std::size_t numSquares):numSquares(numSquares),
-board(std::vector<std::vector<char>>(numSquares,std::vector<char>(numSquares, EMPTY)))
+board(numSquares,std::vector<char>(numSquares, EMPTY))
 {
 
 }

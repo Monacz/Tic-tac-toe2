@@ -12,7 +12,7 @@ public:
 	virtual ~Player() = default;
 
 	//Making movement (to override)
-	virtual Cell makeMove(Board& board) = 0;
+	virtual Cell makeMove(Board board) = 0;
 	char getSymbol();
 
 protected:

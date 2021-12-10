@@ -8,7 +8,7 @@ public:
 	HumanPlayer();
 	~HumanPlayer() = default;
 
-	Cell makeMove(Board& board) override;
+	Cell makeMove(Board board) override;
 
 private:
 

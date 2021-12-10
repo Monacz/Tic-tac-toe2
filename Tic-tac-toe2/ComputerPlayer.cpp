@@ -8,7 +8,7 @@ ComputerPlayer::ComputerPlayer(char symbol) :Player(symbol)
 
 }
 
-Cell ComputerPlayer::makeMove(Board& board)
+Cell ComputerPlayer::makeMove(Board board)
 {
     //take a sleep
     std::this_thread::sleep_for(std::chrono::seconds(3));
