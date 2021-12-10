@@ -9,7 +9,8 @@
 class Board
 {
 public:
-	Board(std::size_t numSquares);
+	Board() = default;
+	explicit Board(std::size_t numSquares);
 	~Board() = default;
 
 	void displayBoard();
