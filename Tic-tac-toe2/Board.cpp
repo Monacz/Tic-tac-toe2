@@ -71,14 +71,10 @@ bool Board::isWinnerMovement(Cell movement, char piece)
         isWinner = true;
         for (size_t i = 0; i < numSquares; ++i)
         {
-            for (size_t j = 0; j < numSquares; ++j)
-            {
-                if (i == j && board[i][j] != piece)
+                if (board[i][i] != piece)
                 {
                     isWinner = false;
                 }
-            }
-
         }
         if (isWinner)
         {
