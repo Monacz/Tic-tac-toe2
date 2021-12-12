@@ -106,7 +106,15 @@ bool Board::isWinnerMovement(Cell movement, char piece)
 
 void Board::setMovement(Cell movement, char piece)
 {
+    if (isLegal(movement))
+    {
         board[movement.x][movement.y] = piece;
+    }
+}
+
+void Board::undoMovement(Cell movement)
+{
+    board[movement.x][movement.y] = EMPTY;
 }
 
 std::size_t Board::size()

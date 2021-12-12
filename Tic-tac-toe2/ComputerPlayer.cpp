@@ -30,7 +30,7 @@ Cell ComputerPlayer::makeMove(Board board)
                 //test for winner
                 found = board.isWinnerMovement(move, playerSymbol);
                 //undo move
-                board.setMovement(move, ' ');
+                board.undoMovement(move);
             }
             if (found)
             {
@@ -62,7 +62,7 @@ Cell ComputerPlayer::makeMove(Board board)
                     //test for winner
                     found = board.isWinnerMovement(move, human);
                     //undo move
-                    board.setMovement(move, ' ');
+                    board.undoMovement(move);
                 }
                 if (found)
                 {

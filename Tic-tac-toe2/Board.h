@@ -20,6 +20,8 @@ public:
 	bool isWinnerMovement(Cell movement, char piece);
 	//Do movement
 	void setMovement(Cell movement, char piece);
+	//undo movement
+	void undoMovement(Cell movement);
 	//size of board
 	std::size_t size();
 
