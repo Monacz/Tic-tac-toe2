@@ -2,7 +2,7 @@
 
 int main()
 {
-    Game match1(2);
+    Game match1(8);
 
     match1.playGame();
 }
