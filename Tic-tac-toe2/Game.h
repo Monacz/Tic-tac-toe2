@@ -17,10 +17,10 @@ private:
 	std::size_t dimension;
 
 	void instructions();
-	char opponent(Player* player);
+	char opponent(Player& player);
 	char whatGameWillBe();
-	char game(Board& board, Player* player1, Player* player2);
-	void announceWinner(char winner, Player* player1, Player* player2);
+	char game(Board& board, Player& player1, Player& player2);
+	void announceWinner(char winner, Player& player1, Player& player2);
 
 	static constexpr char X = 'X';
 	static constexpr char O = 'O';

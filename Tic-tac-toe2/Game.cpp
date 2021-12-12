@@ -35,9 +35,9 @@ char Game::whatGameWillBe()
     return someChar;
 }
 
-char Game::opponent(Player* player)
+char Game::opponent(Player& player)
 {
-    if (player->getSymbol() == 'X')
+    if (player.getSymbol() == 'X')
     {
         return 'O';
     }
@@ -47,7 +47,7 @@ char Game::opponent(Player* player)
     }
 }
 
-char Game::game(Board& board, Player* player1, Player* player2)
+char Game::game(Board& board, Player& player1, Player& player2)
 {
     char winner = NO_ONE;
     char turn = X;
@@ -55,49 +55,49 @@ char Game::game(Board& board, Player* player1, Player* player2)
     board.displayBoard();
     while (winner == NO_ONE)
     {
-        if (turn == player1->getSymbol())
+        if (turn == player1.getSymbol())
         {
 
             std::cout << std::endl << "First's Player turn:" << std::endl;
-            move = player1->makeMove(board);
+            move = player1.makeMove(board);
             while (!board.isLegal(move))
             {
-                move = player1->makeMove(board);
+                move = player1.makeMove(board);
             }
-            board.setMovement(move, player1->getSymbol());
-            if (board.isWinnerMovement(move, player1->getSymbol()))
+            board.setMovement(move, player1.getSymbol());
+            if (board.isWinnerMovement(move, player1.getSymbol()))
             {
-                winner = player1->getSymbol();
+                winner = player1.getSymbol();
             }
-            turn = player2->getSymbol();
+            turn = player2.getSymbol();
         }
         else
         {
             std::cout << std::endl << "Second's Player turn:" << std::endl;
-            move = player2->makeMove(board);
+            move = player2.makeMove(board);
             while (!board.isLegal(move))
             {
-                move = player2->makeMove(board);
+                move = player2.makeMove(board);
             }
-            board.setMovement(move, player2->getSymbol());
-            if (board.isWinnerMovement(move, player2->getSymbol()))
+            board.setMovement(move, player2.getSymbol());
+            if (board.isWinnerMovement(move, player2.getSymbol()))
             {
-                winner = player2->getSymbol();
+                winner = player2.getSymbol();
             }
-            turn = player1->getSymbol();
+            turn = player1.getSymbol();
         }
         board.displayBoard();
     }
     return winner;
 }
 
-void Game::announceWinner(char winner, Player* player1, Player* player2)
+void Game::announceWinner(char winner, Player& player1, Player& player2)
 {
-    if (winner == player1->getSymbol())
+    if (winner == player1.getSymbol())
     {
         std::cout << "Player1's won!\n";
     }
-    if (winner == player2->getSymbol())
+    if (winner == player2.getSymbol())
     {
         std::cout << "Player2's won!\n";
     }
@@ -119,16 +119,16 @@ void Game::playGame()
     if (whatGame == 'H')
     {
         player1 = std::make_unique<HumanPlayer>();
-        player2 = std::make_unique<HumanPlayer>(opponent(player1.get()));
+        player2 = std::make_unique<ComputerPlayer>(opponent(*player1));
         instructions();
     }
     else 
     {
-        player1 = std::make_unique<HumanPlayer>(X);
-        player2 = std::make_unique<HumanPlayer>(opponent(player1.get()));
+        player1 = std::make_unique<ComputerPlayer>(X);
+        player2 = std::make_unique<ComputerPlayer>(opponent(*player1));
     }
     Board board(dimension);
 
-    char winner = game(board, player1.get(), player2.get());
-    announceWinner(winner, player1.get(), player2.get());
+    char winner = game(board, *player1, *player2);
+    announceWinner(winner, *player1, *player2);
 }
