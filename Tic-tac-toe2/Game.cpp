@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <memory>
 
 void Game::instructions()
 {
@@ -112,22 +113,22 @@ Game::Game(std::size_t dimension): dimension(dimension)
 
 void Game::playGame()
 {
-    Player* player1;
-    Player* player2;
+    std::unique_ptr<Player> player1;
+    std::unique_ptr<Player> player2;
     char whatGame = whatGameWillBe();
     if (whatGame == 'H')
     {
-        player1 = new HumanPlayer;
-        player2 = new ComputerPlayer(opponent(player1));
+        player1 = std::make_unique<HumanPlayer>();
+        player2 = std::make_unique<HumanPlayer>(opponent(player1.get()));
         instructions();
     }
     else 
     {
-        player1 = new ComputerPlayer('X');
-        player2 = new ComputerPlayer(opponent(player1));
+        player1 = std::make_unique<HumanPlayer>(X);
+        player2 = std::make_unique<HumanPlayer>(opponent(player1.get()));
     }
     Board board(dimension);
 
-    char winner = game(board, player1, player2);
-    announceWinner(winner, player1, player2);
+    char winner = game(board, player1.get(), player2.get());
+    announceWinner(winner, player1.get(), player2.get());
 }
