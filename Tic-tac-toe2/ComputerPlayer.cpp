@@ -48,7 +48,7 @@ Cell ComputerPlayer::makeMove(Board board)
     if (!found)
     {
         
-        char human = 'X';
+        char human = (playerSymbol == 'X') ? 'O' : 'X';
 
         for (size_t i = 0; i < board.size(); ++i)
         {
